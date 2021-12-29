@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <Header/>
+    <Nuxt/>
     <Footer/>
   </div>
 </template>
@@ -28,6 +29,10 @@ a {
 
 img {
   max-width: 100%;
+}
+
+button {
+  cursor: pointer;
 }
 
 #app {

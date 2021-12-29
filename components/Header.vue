@@ -142,12 +142,13 @@ export default {
         flex-direction: column;
         position: absolute;
         left: 0;
-        top: 20%;
+        top: 0;
         width: 100%;
-        height: 100vh;
+        height: 100%;
         background-color: #1A2B41;
         text-align: center;
         z-index: 1;
+        padding-top: 40%;
 
         a {
           font-size: 2rem;
