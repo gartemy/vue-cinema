@@ -3,7 +3,7 @@
     <div class="container">
       <nav class="navbar">
         <nuxt-link :to="'/'" class="navbar-brand">
-          <img src="../static/logo.png" alt="">
+          <img src="../static/header/logo.webp" alt="">
         </nuxt-link>
 
         <ul class="navbar-nav" :class="{'active': isOpen}">
@@ -11,7 +11,7 @@
             <nuxt-link class="nav-link" :to="item.link">{{ item.title }}</nuxt-link>
           </li>
           <li class="nav-item">
-            <nuxt-link class="nav-link" :to="'/'"><img src="../static/user.png" alt=""></nuxt-link>
+            <nuxt-link class="nav-link" :to="'/'"><img src="../static/header/user.webp" alt=""></nuxt-link>
           </li>
         </ul>
 
@@ -52,6 +52,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+img {
+  max-width: 100%;
+}
 
 .navbar {
   display: flex;
@@ -128,7 +132,7 @@ export default {
     align-items: center;
 
     &-brand {
-      z-index: 2;
+      z-index: 200;
       img {
         width: 200px;
       }
@@ -147,7 +151,7 @@ export default {
         height: 100%;
         background-color: #1A2B41;
         text-align: center;
-        z-index: 1;
+        z-index: 100;
         padding-top: 40%;
 
         a {
@@ -159,7 +163,7 @@ export default {
     &-toggler {
       display: block;
       padding-bottom: 14px;
-      z-index: 2;
+      z-index: 100;
     }
   }
 }

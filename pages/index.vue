@@ -1,7 +1,9 @@
 <template>
   <main class="main">
-    <div class="timetable">
-      <div class="container">
+    <div class="container">
+      <carousel :carousel-data="carouselItems" :interval="10000"></carousel>
+
+      <div class="timetable">
         <h3 class="timetable__title">Расписание сеансов</h3>
 
         <div class="timetable__days">
@@ -14,8 +16,8 @@
         <div class="timetable__items">
           <div class="timetable__item" v-for="film in films" :key="film.id">
             <div class="timetable__item-poster">
-              <img class="timetable__item-icon desk" :src="require(`../static/timetable/${film.img[0]}`)" alt="">
-              <img class="timetable__item-icon mob" :src="require(`../static/timetable/${film.img[1]}`)" alt="">
+              <img class="timetable__item-icon desk" :src="require(`../static/timetable/${film.desktopImg}`)" alt="">
+              <img class="timetable__item-icon mob" :src="require(`../static/timetable/${film.mobileImg}`)" alt="">
             </div>
             <div class="timetable__item-info">
               <div class="top">
@@ -25,18 +27,15 @@
                     <p>{{ film.genre }}</p>
                     <p>{{ film.timing }}</p>
                   </div>
-                  <nuxt-link :to="'/'">{{ film.title }}</nuxt-link>
+                  <nuxt-link :to="'/'" class="film-title">{{ film.title }}</nuxt-link>
                 </div>
                 <div class="top__right">
-                  <span class="top-btn age">{{ film.age }}</span>
-                  <button class="top-btn fav-btn"><img src="../static/fav-btn.svg" alt=""></button>
+                  <span class="age-btn">{{ film.age }}</span>
+                  <button class="fav-btn"><img src="../static/fav-btn.svg" alt=""></button>
                 </div>
               </div>
               <div class="timetable__item-schedule">
-                <button class="schedule-btn" v-for="item in film.schedule" :key="item.id">
-                  <span>{{ item.time }}</span><br>
-                  <span class="price">{{ item.price }}</span>
-                </button>
+                <schedule-btn v-for="item in film.schedule" :key="item.id" :schedule="item" ></schedule-btn>
               </div>
             </div>
           </div>
@@ -47,27 +46,92 @@
 </template>
 
 <script>
+import Carousel from "../components/Carousel";
+import ScheduleBtn from "../components/ScheduleBtn";
+
 export default {
   name: 'IndexPage',
+  components: {Carousel, ScheduleBtn},
   data() {
     return {
       days: [
         {id: 1, week: 'Сегодня', date: '31 декабря', isActive: true},
-        {id: 2, week: 'Сегодня', date: '31 декабря', isActive: false},
-        {id: 3, week: 'Сегодня', date: '31 декабря', isActive: false},
-        {id: 4, week: 'Сегодня', date: '31 декабря', isActive: false},
-        {id: 5, week: 'Сегодня', date: '31 декабря', isActive: false},
-        {id: 6, week: 'Сегодня', date: '31 декабря', isActive: false},
-        {id: 7, week: 'Сегодня', date: '31 декабря', isActive: false}
+        {id: 2, week: 'Завтра', date: '1 января', isActive: false},
+        {id: 3, week: 'Воскресенье', date: '2 января', isActive: false},
+        {id: 4, week: 'Понедельник', date: '3 января', isActive: false},
+        {id: 5, week: 'Вторник', date: '4 января', isActive: false},
+        {id: 6, week: 'Среда', date: '5 января', isActive: false},
+        {id: 7, week: 'Четверг', date: '6 января', isActive: false}
+      ],
+      carouselItems: [
+        {
+          id: 1,
+          title: 'Человек-паук: Нет пути домой',
+          carouselImg: 'spider-man1.webp',
+          filmImg: 'spider-man.webp',
+          country: 'США',
+          genre: 'боевик',
+          timing: '2 часа 30 минут',
+          age: '12+',
+          schedule: [
+            {id: 1, time: '10:35', price: '190 ₽'},
+            {id: 2, time: '10:35', price: '190 ₽'},
+            {id: 3, time: '10:35', price: '190 ₽'},
+            {id: 4, time: '10:35', price: '190 ₽'},
+            {id: 5, time: '10:35', price: '190 ₽'},
+            {id: 6, time: '10:35', price: '190 ₽'},
+            {id: 7, time: '10:35', price: '190 ₽'}
+          ]
+
+        },
+        {
+          id: 2,
+          title: 'Дом Gucci',
+          carouselImg: 'gucci.webp',
+          filmImg: 'gucci1.webp',
+          country: 'США',
+          genre: 'фантастика',
+          timing: '2 часа 28 минут',
+          age: '16+',
+          schedule: [
+            {id: 1, time: '10:35', price: '190 ₽'},
+            {id: 2, time: '10:35', price: '190 ₽'},
+            {id: 3, time: '10:35', price: '190 ₽'},
+            {id: 4, time: '10:35', price: '190 ₽'},
+            {id: 5, time: '10:35', price: '190 ₽'},
+            {id: 6, time: '10:35', price: '190 ₽'},
+            {id: 7, time: '10:35', price: '190 ₽'}
+          ]
+        },
+        {
+          id: 3,
+          title: 'Матрица: Воскрешение',
+          carouselImg: 'matrix1.webp',
+          filmImg: 'matrix.webp',
+          country: 'США',
+          genre: 'драма',
+          timing: '2 часа 28 минут',
+          age: '18+',
+          schedule: [
+            {id: 1, time: '10:35', price: '190 ₽'},
+            {id: 2, time: '10:35', price: '190 ₽'},
+            {id: 3, time: '10:35', price: '190 ₽'},
+            {id: 4, time: '10:35', price: '190 ₽'},
+            {id: 5, time: '10:35', price: '190 ₽'},
+            {id: 6, time: '10:35', price: '190 ₽'},
+            {id: 7, time: '10:35', price: '190 ₽'}
+          ]
+        },
       ],
       films: [
         {
           id: 1,
-          img: ['enkanto.png', 'enkanto-mob.jpg'],
+          title: 'Энканто',
+          desktopImg: 'enkanto.webp',
+          mobileImg: 'enkanto-mob.webp',
           country: 'США, Колумбия',
           genre: 'мультфильм',
           timing: '1 час 42 минуты',
-          title: 'Энканто',
           age: '6+',
           schedule: [
             {id: 1, time: '10:35', price: '190 ₽'},
@@ -81,11 +145,12 @@ export default {
         },
         {
           id: 2,
-          img: ['spider-man.png', 'spider-man-mob.jpeg'],
+          title: 'Человек-паук: Нет пути домой',
+          desktopImg: 'spider-man.webp',
+          mobileImg: 'spider-man-mob.webp',
           country: 'США',
           genre: 'боевик',
           timing: '2 часа 30 минут',
-          title: 'Человек-паук: Нет пути домой',
           age: '12+',
           schedule: [
             {id: 1, time: '10:35', price: '190 ₽'},
@@ -99,11 +164,12 @@ export default {
         },
         {
           id: 3,
-          img: ['matrix.png', 'matrix-mob.jpg'],
+          title: 'Матрица: Воскрешение',
+          desktopImg: 'matrix.webp',
+          mobileImg: 'matrix-mob.webp',
           country: 'США',
           genre: 'фантастика',
           timing: '2 часа 28 минут',
-          title: 'Матрица: Воскрешение',
           age: '16+',
           schedule: [
             {id: 1, time: '10:35', price: '190 ₽'},
@@ -117,11 +183,12 @@ export default {
         },
         {
           id: 4,
-          img: ['gucci.png', 'gucci-mob.png'],
+          title: 'Дом Gucci',
+          desktopImg: 'gucci.webp',
+          mobileImg: 'gucci-mob.webp',
           country: 'США',
           genre: 'драма',
           timing: '2 часа 28 минут',
-          title: 'Дом Gucci',
           age: '18+',
           schedule: [
             {id: 1, time: '10:35', price: '190 ₽'},
@@ -155,6 +222,31 @@ export default {
     margin-bottom: 53px;
     overflow-y: hidden;
     overflow-x: auto;
+
+    .day {
+      border: 1px solid #ffffff;
+      border-radius: 8px;
+      color: #ffffff;
+      background: none;
+      padding: 15px 20px;
+
+      &__week {
+        display: block;
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 5px;
+      }
+
+      &__date {
+        font-size: 0.875rem;
+        white-space: nowrap;
+      }
+
+      &.active {
+        color: #E51937;
+        background: #ffffff;
+      }
+    }
   }
 
   &__item {
@@ -189,27 +281,10 @@ export default {
           gap: 15px;
         }
 
-        &-btn {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 50px;
-          height: 50px;
-          font-weight: 600;
-          border: 1px solid #ffffff;
-          border-radius: 100px;
-        }
-
         .fav-btn {
           background: none;
           padding-left: 7px;
         }
-      }
-
-      a {
-        color: #ffffff;
-        font-size: 1.75rem;
-        font-weight: 600;
       }
     }
 
@@ -228,53 +303,7 @@ export default {
       display: flex;
       gap: 20px;
       flex-wrap: wrap;
-
-      .schedule-btn {
-        min-width: 80px;
-        height: 55px;
-        color: #ffffff;
-        background-color: #E51937;
-        border: none;
-        border-radius: 8px;
-
-        span {
-          font-size: 1rem;
-          font-weight: 700;
-        }
-
-        .price {
-          font-size: 11px;
-          font-weight: 400;
-          color: rgba(255, 255, 255, 0.7);
-          padding-left: 2px;
-        }
-      }
     }
-  }
-}
-
-.day {
-  position: relative;
-  border: 1px solid #ffffff;
-  border-radius: 8px;
-  color: #ffffff;
-  background: none;
-  padding: 15px 20px;
-
-  &__week {
-    display: block;
-    font-size: 1.125rem;
-    font-weight: 700;
-    margin-bottom: 5px;
-  }
-
-  &__date {
-    font-size: 0.875rem;
-  }
-
-  &.active {
-    background-color: #ffffff;
-    color: #E51937;
   }
 }
 
@@ -300,11 +329,11 @@ export default {
       &-info {
 
         .top {
-          gap: 10px;
           align-items: flex-start;
+          gap: 10px;
           margin-bottom: 30px;
 
-          &-btn {
+          .age-btn, .fav-btn {
             width: 40px;
             height: 40px;
           }
@@ -322,6 +351,7 @@ export default {
 
       &-schedule {
         flex-wrap: nowrap;
+        overflow-y: hidden;
         overflow-x: auto;
       }
     }

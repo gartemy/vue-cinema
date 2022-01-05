@@ -24,12 +24,12 @@
           <h4 class="footer__title">Контакты</h4>
           <div class="footer__info">
             <div class="footer__map">
-              <img src="../static/map.png" alt="">
+              <img src="../static/footer/map.webp" alt="">
             </div>
             <div class="footer__contacts">
               <div class="footer__socials">
-                <img src="../static/vk.svg" alt="">
-                <img src="../static/insta.svg" alt="">
+                <img src="../static/footer/vk.svg" alt="">
+                <img src="../static/footer/insta.svg" alt="">
               </div>
               <nuxt-link :to="'/'">8 (800) 555-35-35</nuxt-link>
             </div>
@@ -62,6 +62,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+img {
+  max-width: 100%;
+}
 
 .footer {
   margin-top: auto;

@@ -12,7 +12,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 
 * {
   margin: 0;
@@ -25,10 +25,6 @@ li {
 
 a {
   text-decoration: none;
-}
-
-img {
-  max-width: 100%;
 }
 
 button {
@@ -56,4 +52,41 @@ body {
   padding: 0 10px;
 }
 
+.film-title {
+  color: #ffffff;
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+.age-btn, .fav-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  font-weight: 600;
+  border: 1px solid #ffffff;
+  border-radius: 100px;
+}
+
+.schedule-btn {
+  min-width: 80px;
+  height: 55px;
+  color: #ffffff;
+  background-color: #E51937;
+  border: none;
+  border-radius: 8px;
+
+  span {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .price {
+    font-size: 11px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+    padding-left: 2px;
+  }
+}
 </style>
