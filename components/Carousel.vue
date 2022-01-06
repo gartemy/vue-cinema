@@ -68,7 +68,9 @@ export default {
     }
   },
   mounted() {
-    window.addEventListener('resize', this.resizeCarousel)
+    if (this.width <= 875) {
+      window.addEventListener('resize', this.resizeCarousel)
+    }
     if (this.interval > 0) {
       const vm = this
       setInterval(() => {
