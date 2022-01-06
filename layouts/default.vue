@@ -62,11 +62,28 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-weight: 600;
+  border: 2px solid #ffffff;
+  border-radius: 100px;
+}
+
+.age-btn {
+  width: 46px;
+  height: 46px;
+}
+
+.fav-btn {
   width: 50px;
   height: 50px;
-  font-weight: 600;
-  border: 1px solid #ffffff;
-  border-radius: 100px;
+  transition: all ease 0.3s;
+
+  &.active {
+    border-color: #E51937;
+
+    path {
+      fill: #E51937;
+    }
+  }
 }
 
 .schedule-btn {

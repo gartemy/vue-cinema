@@ -119,9 +119,8 @@ export default {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 930px) {
   .carousel {
-    margin: 20px auto 40px auto;
 
     .prev, .next {
       width: 40px;
@@ -135,6 +134,11 @@ export default {
     .next {
       right: 0;
     }
+  }
+}
+@media (max-width: 768px) {
+  .carousel {
+    margin: 20px auto 40px auto;
   }
 }
 
