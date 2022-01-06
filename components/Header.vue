@@ -144,6 +144,7 @@ img {
       &.active {
         display: flex;
         flex-direction: column;
+        gap: 40px;
         position: absolute;
         left: 0;
         top: 0;
@@ -152,7 +153,7 @@ img {
         background-color: #1A2B41;
         text-align: center;
         z-index: 100;
-        padding-top: 40%;
+        padding-top: 120px;
 
         a {
           font-size: 2rem;
