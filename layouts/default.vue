@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <trailer-modal v-if="$store.state.isModalVisible" :trailer="$store.state.trailer"></trailer-modal>
     <Header/>
     <Nuxt/>
     <Footer/>

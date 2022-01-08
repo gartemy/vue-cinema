@@ -20,7 +20,7 @@
               <img class="timetable__item-icon desk" :src="require(`../static/timetable/${film.desktopImg}`)" alt="">
               <img class="timetable__item-icon mob" :src="require(`../static/timetable/${film.mobileImg}`)" alt="">
               <div class="timetable__item-trailer">
-                <button class="trailer-btn">
+                <button class="trailer-btn" @click="$store.commit('SHOW_TRAILER', film.trailer)" >
                   <img src="../static/trailer-btn.svg" alt="">
                 </button>
                 <span>Смотреть трейлер</span>
@@ -98,6 +98,7 @@ export default {
       carouselItems: [
         {
           id: 1,
+          trailer: 'https://www.youtube.com/embed/V0hagz_8L3M',
           title: 'Человек-паук: Нет пути домой',
           carouselImg: 'spider-man1.webp',
           filmImg: 'spider-man.webp',
@@ -117,6 +118,7 @@ export default {
         },
         {
           id: 2,
+          trailer: 'https://www.youtube.com/embed/_JqXO37znNU',
           title: 'Дом Gucci',
           carouselImg: 'gucci.webp',
           filmImg: 'gucci1.webp',
@@ -136,6 +138,7 @@ export default {
         },
         {
           id: 3,
+          trailer: 'https://www.youtube.com/embed/RkA5CjdkM8M',
           title: 'Матрица: Воскрешение',
           carouselImg: 'matrix1.webp',
           filmImg: 'matrix.webp',
@@ -157,6 +160,7 @@ export default {
       films: [
         {
           id: 1,
+          trailer: 'https://www.youtube.com/embed/eY9ZZyEc0CQ',
           title: 'Энканто',
           desktopImg: 'enkanto.webp',
           mobileImg: 'enkanto-mob.webp',
@@ -177,6 +181,7 @@ export default {
         },
         {
           id: 2,
+          trailer: 'https://www.youtube.com/embed/V0hagz_8L3M',
           title: 'Человек-паук: Нет пути домой',
           desktopImg: 'spider-man.webp',
           mobileImg: 'spider-man-mob.webp',
@@ -197,6 +202,7 @@ export default {
         },
         {
           id: 3,
+          trailer: 'https://www.youtube.com/embed/RkA5CjdkM8M',
           title: 'Матрица: Воскрешение',
           desktopImg: 'matrix.webp',
           mobileImg: 'matrix-mob.webp',
@@ -217,6 +223,7 @@ export default {
         },
         {
           id: 4,
+          trailer: 'https://www.youtube.com/embed/_JqXO37znNU',
           title: 'Дом Gucci',
           desktopImg: 'gucci.webp',
           mobileImg: 'gucci-mob.webp',

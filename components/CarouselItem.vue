@@ -1,40 +1,40 @@
 <template>
-  <div class="carousel__item">
-    <div class="background"></div>
-    <div class="carousel__icon">
-      <img ref="carouselIcon" :src="require(`../static/carousel/${itemData.carouselImg}`)" alt="">
-    </div>
-    <div class="carousel__info" v-if="itemData.filmImg">
-      <div class="carousel__info-icon">
-        <img :src="require(`../static/carousel/${itemData.filmImg}`)" alt="">
+    <div class="carousel__item">
+      <div class="background"></div>
+      <div class="carousel__icon">
+        <img :src="require(`../static/carousel/${itemData.carouselImg}`)" alt="">
       </div>
-      <div class="carousel__info-description">
-        <p>{{ itemData.genre }}</p>
-        <nuxt-link :to="'/'" class="film-title">{{ itemData.title }}</nuxt-link>
-        <div class="carousel__info-btn">
-          <button class="trailer-btn">
-            Смотреть трейлер
-            <img src="../static/trailer-btn.svg" alt="">
-          </button>
-          <span class="age-btn">{{ itemData.age }}</span>
+      <div class="carousel__info" v-if="itemData.filmImg">
+        <div class="carousel__info-icon">
+          <img :src="require(`../static/carousel/${itemData.filmImg}`)" alt="">
         </div>
-        <div class="carousel__info-timetable">
-          <p>Ближайшие сеансы на 31.12:</p>
-          <div class="carousel__info-schedule">
-            <schedule-btn v-for="item in itemData.schedule.slice(0,4)" :key="item.id" :schedule="item"></schedule-btn>
-            <button class="schedule-btn">
-              <span>Еще {{ itemData.schedule.length - 4 }}</span>
-              <span>Еще {{ itemData.schedule.length - 3 }}</span>
+        <div class="carousel__info-description">
+          <p>{{ itemData.genre }}</p>
+          <nuxt-link :to="'/'" class="film-title">{{ itemData.title }}</nuxt-link>
+          <div class="carousel__info-btn">
+            <button class="trailer-btn" @click="$store.commit('SHOW_TRAILER', itemData.trailer)">
+              Смотреть трейлер
+              <img src="../static/trailer-btn.svg" alt="">
             </button>
+            <span class="age-btn">{{ itemData.age }}</span>
+          </div>
+          <div class="carousel__info-timetable">
+            <p>Ближайшие сеансы на 31.12:</p>
+            <div class="carousel__info-schedule">
+              <schedule-btn v-for="item in itemData.schedule.slice(0,4)" :key="item.id" :schedule="item"></schedule-btn>
+              <button class="schedule-btn">
+                <span>Еще {{ itemData.schedule.length - 4 }}</span>
+                <span>Еще {{ itemData.schedule.length - 3 }}</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="carousel__banner">
-      <p>{{ itemData.title }} уже в кино!</p>
+      <div class="carousel__banner">
+        <p>{{ itemData.title }} уже в кино!</p>
+      </div>
     </div>
-  </div>
 </template>
 
 <script>

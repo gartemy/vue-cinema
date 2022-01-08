@@ -1,12 +1,11 @@
 <template>
   <div class="carousel">
-    <div ref="wrapper" class="carousel__wrapper">
-      <div ref="carousel" class="carousel__line">
+    <div class="carousel__wrapper">
+      <div class="carousel__line">
         <carousel-item
           v-for="item in carouselData"
           :key="item.id"
           :item-data="item"
-          ref="carouselItems"
         />
       </div>
     </div>
@@ -39,16 +38,17 @@ export default {
   },
   methods: {
     resizeCarousel() {
-      this.width = this.$refs.wrapper.offsetWidth
-      this.$refs.carousel.style.width = this.width * this.carouselData.length + 'px'
-      this.$refs.carouselItems.forEach(item => {
-        item.$refs.carouselIcon.style.width = this.width + 'px'
-        item.$refs.carouselIcon.style.height = 'auto'
+      let images = document.querySelectorAll('.carousel__line .carousel__icon img')
+      this.width = document.querySelector('.carousel__wrapper').offsetWidth
+      document.querySelector('.carousel__line').style.width = this.width * this.carouselData.length + 'px'
+      images.forEach(item => {
+        item.style.width = this.width + 'px'
+        item.style.height = 'auto'
       })
       this.rollCarousel()
     },
     rollCarousel() {
-      this.$refs.carousel.style.transform = 'translate(-' + this.currentSlideIndex * this.width + 'px'
+      document.querySelector('.carousel__line').style.transform = 'translate(-' + this.currentSlideIndex * this.width + 'px'
     },
     prevSlide() {
       if (this.currentSlideIndex > 0) {
@@ -68,9 +68,8 @@ export default {
     }
   },
   mounted() {
-    if (this.width <= 875) {
-      window.addEventListener('resize', this.resizeCarousel)
-    }
+    this.resizeCarousel()
+    window.addEventListener('resize', this.resizeCarousel)
     if (this.interval > 0) {
       const vm = this
       setInterval(() => {
@@ -138,6 +137,7 @@ export default {
     }
   }
 }
+
 @media (max-width: 768px) {
   .carousel {
     margin: 20px auto 40px auto;
