@@ -40,6 +40,8 @@ button {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
   color: #ffffff;
@@ -51,12 +53,19 @@ body {
   max-width: 1320px;
   margin: 0 auto;
   padding: 0 10px;
+  height: 100%;
 }
 
 .film-title {
   color: #ffffff;
   font-size: 1.75rem;
   font-weight: 600;
+}
+
+.film-genre {
+  padding-top: 5px;
+  font-weight: 100;
+  font-size: 1.2rem;
 }
 
 .age-btn, .fav-btn {
@@ -94,6 +103,7 @@ body {
   background-color: #E51937;
   border: none;
   border-radius: 8px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
   span {
     font-size: 1rem;

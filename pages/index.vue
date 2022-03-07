@@ -1,26 +1,22 @@
 <template>
   <main class="main">
     <div class="container">
-      <carousel :carousel-data="carouselItems" :interval="10000"></carousel>
+      <carousel :carousel-data="$store.state.carouselData" :interval="5000"></carousel>
 
       <div class="timetable">
         <h3 class="timetable__title">Расписание сеансов</h3>
 
         <div class="timetable__days">
-          <button class="day" v-for="day in days" :key="day.id" :class="{active: day.id === activeDay}"
-                  @click="activeDay = day.id">
-            <span class="day__week">{{ day.week }}</span>
-            <span class="day__date">{{ day.date }}</span>
-          </button>
+          <day v-for="day in $store.state.days" :key="day.id" :day="day" :activeDay="activeDay" @activeDay="setActiveDay"></day>
         </div>
 
         <div class="timetable__items">
-          <div class="timetable__item" v-for="film in films" :key="film.id">
+          <div class="timetable__item" v-for="film in $store.state.films" :key="film.id">
             <div class="timetable__item-poster">
               <img class="timetable__item-icon desk" :src="require(`../static/timetable/${film.desktopImg}`)" alt="">
               <img class="timetable__item-icon mob" :src="require(`../static/timetable/${film.mobileImg}`)" alt="">
               <div class="timetable__item-trailer">
-                <button class="trailer-btn" @click="$store.commit('SHOW_TRAILER', film.trailer)" >
+                <button class="trailer-btn" @click="$store.commit('SHOW_TRAILER', film.trailer)">
                   <img src="../static/trailer-btn.svg" alt="">
                 </button>
                 <span>Смотреть трейлер</span>
@@ -40,7 +36,7 @@
                 <div class="top__right">
                   <span class="age-btn">{{ film.age }}</span>
                   <button class="fav-btn" :class="{active : film.isFavourite}"
-                          @click="film.isFavourite = !film.isFavourite">
+                          @click="$store.commit('ADD_FAVOURITE', film.id)">
                     <svg xmlns="http://www.w3.org/2000/svg" width="27" height="24" viewBox="0 0 27 24" fill="none">
                       <g id="Iconly/Light-Outline/Heart">
                         <g id="Heart">
@@ -78,171 +74,20 @@
 
 <script>
 import Carousel from "../components/Carousel";
+import Day from "../components/Day"
 import ScheduleBtn from "../components/ScheduleBtn";
 
 export default {
   name: 'IndexPage',
-  components: {Carousel, ScheduleBtn},
+  components: {Carousel, Day, ScheduleBtn},
   data() {
     return {
-      activeDay: 1,
-      days: [
-        {id: 1, week: 'Сегодня', date: '31 декабря', isActive: true},
-        {id: 2, week: 'Завтра', date: '1 января', isActive: false},
-        {id: 3, week: 'Воскресенье', date: '2 января', isActive: false},
-        {id: 4, week: 'Понедельник', date: '3 января', isActive: false},
-        {id: 5, week: 'Вторник', date: '4 января', isActive: false},
-        {id: 6, week: 'Среда', date: '5 января', isActive: false},
-        {id: 7, week: 'Четверг', date: '6 января', isActive: false}
-      ],
-      carouselItems: [
-        {
-          id: 1,
-          trailer: 'https://www.youtube.com/embed/V0hagz_8L3M',
-          title: 'Человек-паук: Нет пути домой',
-          carouselImg: 'spider-man1.webp',
-          filmImg: 'spider-man.webp',
-          country: 'США',
-          genre: 'боевик',
-          timing: '2 часа 30 минут',
-          age: '12+',
-          schedule: [
-            {id: 1, time: '10:35', price: '190 ₽'},
-            {id: 2, time: '10:35', price: '190 ₽'},
-            {id: 3, time: '10:35', price: '190 ₽'},
-            {id: 4, time: '10:35', price: '190 ₽'},
-            {id: 5, time: '10:35', price: '190 ₽'},
-            {id: 6, time: '10:35', price: '190 ₽'},
-            {id: 7, time: '10:35', price: '190 ₽'}
-          ],
-        },
-        {
-          id: 2,
-          trailer: 'https://www.youtube.com/embed/_JqXO37znNU',
-          title: 'Дом Gucci',
-          carouselImg: 'gucci.webp',
-          filmImg: 'gucci1.webp',
-          country: 'США',
-          genre: 'фантастика',
-          timing: '2 часа 28 минут',
-          age: '16+',
-          schedule: [
-            {id: 1, time: '10:35', price: '190 ₽'},
-            {id: 2, time: '10:35', price: '190 ₽'},
-            {id: 3, time: '10:35', price: '190 ₽'},
-            {id: 4, time: '10:35', price: '190 ₽'},
-            {id: 5, time: '10:35', price: '190 ₽'},
-            {id: 6, time: '10:35', price: '190 ₽'},
-            {id: 7, time: '10:35', price: '190 ₽'}
-          ]
-        },
-        {
-          id: 3,
-          trailer: 'https://www.youtube.com/embed/RkA5CjdkM8M',
-          title: 'Матрица: Воскрешение',
-          carouselImg: 'matrix1.webp',
-          filmImg: 'matrix.webp',
-          country: 'США',
-          genre: 'драма',
-          timing: '2 часа 28 минут',
-          age: '18+',
-          schedule: [
-            {id: 1, time: '10:35', price: '190 ₽'},
-            {id: 2, time: '10:35', price: '190 ₽'},
-            {id: 3, time: '10:35', price: '190 ₽'},
-            {id: 4, time: '10:35', price: '190 ₽'},
-            {id: 5, time: '10:35', price: '190 ₽'},
-            {id: 6, time: '10:35', price: '190 ₽'},
-            {id: 7, time: '10:35', price: '190 ₽'}
-          ]
-        },
-      ],
-      films: [
-        {
-          id: 1,
-          trailer: 'https://www.youtube.com/embed/eY9ZZyEc0CQ',
-          title: 'Энканто',
-          desktopImg: 'enkanto.webp',
-          mobileImg: 'enkanto-mob.webp',
-          country: 'США, Колумбия',
-          genre: 'мультфильм',
-          timing: '1 час 42 минуты',
-          age: '6+',
-          schedule: [
-            {id: 1, time: '10:35', price: '190 ₽'},
-            {id: 2, time: '10:35', price: '190 ₽'},
-            {id: 3, time: '10:35', price: '190 ₽'},
-            {id: 4, time: '10:35', price: '190 ₽'},
-            {id: 5, time: '10:35', price: '190 ₽'},
-            {id: 6, time: '10:35', price: '190 ₽'},
-            {id: 7, time: '10:35', price: '190 ₽'}
-          ],
-          isFavourite: false
-        },
-        {
-          id: 2,
-          trailer: 'https://www.youtube.com/embed/V0hagz_8L3M',
-          title: 'Человек-паук: Нет пути домой',
-          desktopImg: 'spider-man.webp',
-          mobileImg: 'spider-man-mob.webp',
-          country: 'США',
-          genre: 'боевик',
-          timing: '2 часа 30 минут',
-          age: '12+',
-          schedule: [
-            {id: 1, time: '10:35', price: '190 ₽'},
-            {id: 2, time: '10:35', price: '190 ₽'},
-            {id: 3, time: '10:35', price: '190 ₽'},
-            {id: 4, time: '10:35', price: '190 ₽'},
-            {id: 5, time: '10:35', price: '190 ₽'},
-            {id: 6, time: '10:35', price: '190 ₽'},
-            {id: 7, time: '10:35', price: '190 ₽'}
-          ],
-          isFavourite: false
-        },
-        {
-          id: 3,
-          trailer: 'https://www.youtube.com/embed/RkA5CjdkM8M',
-          title: 'Матрица: Воскрешение',
-          desktopImg: 'matrix.webp',
-          mobileImg: 'matrix-mob.webp',
-          country: 'США',
-          genre: 'фантастика',
-          timing: '2 часа 28 минут',
-          age: '16+',
-          schedule: [
-            {id: 1, time: '10:35', price: '190 ₽'},
-            {id: 2, time: '10:35', price: '190 ₽'},
-            {id: 3, time: '10:35', price: '190 ₽'},
-            {id: 4, time: '10:35', price: '190 ₽'},
-            {id: 5, time: '10:35', price: '190 ₽'},
-            {id: 6, time: '10:35', price: '190 ₽'},
-            {id: 7, time: '10:35', price: '190 ₽'}
-          ],
-          isFavourite: false
-        },
-        {
-          id: 4,
-          trailer: 'https://www.youtube.com/embed/_JqXO37znNU',
-          title: 'Дом Gucci',
-          desktopImg: 'gucci.webp',
-          mobileImg: 'gucci-mob.webp',
-          country: 'США',
-          genre: 'драма',
-          timing: '2 часа 28 минут',
-          age: '18+',
-          schedule: [
-            {id: 1, time: '10:35', price: '190 ₽'},
-            {id: 2, time: '10:35', price: '190 ₽'},
-            {id: 3, time: '10:35', price: '190 ₽'},
-            {id: 4, time: '10:35', price: '190 ₽'},
-            {id: 5, time: '10:35', price: '190 ₽'},
-            {id: 6, time: '10:35', price: '190 ₽'},
-            {id: 7, time: '10:35', price: '190 ₽'}
-          ],
-          isFavourite: false
-        },
-      ]
+      activeDay: 1
+    }
+  },
+  methods: {
+    setActiveDay(id) {
+      this.activeDay = id
     }
   }
 }
@@ -264,31 +109,6 @@ export default {
     margin-bottom: 53px;
     overflow-y: hidden;
     overflow-x: auto;
-
-    .day {
-      border: 1px solid #ffffff;
-      border-radius: 8px;
-      color: #ffffff;
-      background: none;
-      padding: 15px 20px;
-
-      &__week {
-        display: block;
-        font-size: 1rem;
-        font-weight: 700;
-        margin-bottom: 5px;
-      }
-
-      &__date {
-        font-size: 0.875rem;
-        white-space: nowrap;
-      }
-
-      &.active {
-        color: #E51937;
-        background: #ffffff;
-      }
-    }
   }
 
   &__item {

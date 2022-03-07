@@ -31,7 +31,7 @@ export default {
       isOpen: false,
       items: [
         {id: 1, title: 'Расписание', link: '/'},
-        {id: 2, title: 'Фильмы', link: '/'},
+        {id: 2, title: 'Фильмы', link: '/films'},
         {id: 3, title: 'Акции', link: '/'},
         {id: 4, title: 'Новости', link: '/'},
         {id: 5, title: 'Контакты', link: '/'}
