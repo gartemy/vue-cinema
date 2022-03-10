@@ -44,6 +44,7 @@ body {
   flex-direction: column;
   font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
+  font-weight: 400;
   color: #ffffff;
   background-color: #1A2B41;
   position: relative;
@@ -56,16 +57,46 @@ body {
   height: 100%;
 }
 
-.film-title {
-  color: #ffffff;
-  font-size: 1.75rem;
-  font-weight: 600;
-}
+.film {
 
-.film-genre {
-  padding-top: 5px;
-  font-weight: 100;
-  font-size: 1.2rem;
+  &-title {
+    color: #ffffff;
+    font-size: 1.75rem;
+    font-weight: 600;
+  }
+
+  &-genre {
+    padding-top: 5px;
+    font-weight: 100;
+    font-size: 1.2rem;
+  }
+
+  &__poster {
+    width: 275px;
+    position: relative;
+    cursor: pointer;
+
+    img {
+      min-width: 100%;
+      border-radius: 8px;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    span {
+      font-size: 12px;
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #E51937;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      top: 12px;
+      right: 15px;
+      color: #ffffff;
+    }
+  }
 }
 
 .age-btn, .fav-btn {

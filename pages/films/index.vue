@@ -7,8 +7,8 @@
         </ul>
       </div>
       <div class="films">
-        <div class="films__item" v-for="film in $store.state.films" :key="film.id">
-          <img :src="require(`../static/timetable/${film.desktopImg}`)" alt="">
+        <div class="films__item film__poster" v-for="film in $store.state.films" :key="film.id" @click="$router.push(`/films/${film.id}`)">
+          <img :src="require(`../../static/timetable/${film.desktopImg}`)" alt="">
           <span>{{ film.age }}</span>
           <div class="films__item-content">
             <div>
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import Tab from '../components/Tab'
+import Tab from '../../components/Tab'
 
 export default {
   name: "films",
@@ -52,7 +52,7 @@ export default {
 }
 
 .tabs {
-  padding: 43px 0;
+  padding: 50px 0;
 
   .tab {
     margin: 0;
@@ -70,30 +70,6 @@ export default {
   margin-bottom: 60px;
 
   &__item {
-    width: 275px;
-    position: relative;
-    cursor: pointer;
-
-    img {
-      min-width: 100%;
-      border-radius: 8px;
-      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    }
-
-    span {
-      font-size: 12px;
-      position: absolute;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #E51937;
-      border-radius: 50%;
-      width: 30px;
-      height: 30px;
-      top: 12px;
-      right: 15px;
-      color: #ffffff;
-    }
 
     &-content {
       position: absolute;
