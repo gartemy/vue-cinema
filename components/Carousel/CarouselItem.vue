@@ -2,11 +2,11 @@
     <div class="carousel__item">
       <div class="background"></div>
       <div class="carousel__icon">
-        <img :src="require(`../static/carousel/${itemData.carouselImg}`)" alt="">
+        <img :src="require(`../../static/carousel/${itemData.carouselImg}`)" alt="">
       </div>
       <div class="carousel__info" v-if="itemData.filmImg">
         <div class="carousel__info-icon">
-          <img :src="require(`../static/carousel/${itemData.filmImg}`)" alt="">
+          <img :src="require(`../../static/carousel/${itemData.filmImg}`)" alt="">
         </div>
         <div class="carousel__info-description">
           <p>{{ itemData.genre }}</p>
@@ -14,7 +14,7 @@
           <div class="carousel__info-btn">
             <button class="trailer-btn" @click="$store.commit('SHOW_TRAILER', itemData.trailer)">
               Смотреть трейлер
-              <img src="../static/trailer-btn.svg" alt="">
+              <img src="../../static/trailer-btn.svg" alt="">
             </button>
             <span class="age-btn">{{ itemData.age }}</span>
           </div>

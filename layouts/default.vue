@@ -32,6 +32,10 @@ button {
   cursor: pointer;
 }
 
+textarea {
+  overflow: auto;
+}
+
 #app {
   overflow: hidden;
   display: flex;
@@ -63,6 +67,11 @@ body {
     color: #ffffff;
     font-size: 1.75rem;
     font-weight: 600;
+
+    &:hover {
+      transition: .3s ease;
+      text-shadow: 0 0 10px #E51937;
+    }
   }
 
   &-genre {

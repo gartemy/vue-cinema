@@ -9,8 +9,8 @@
         />
       </div>
     </div>
-    <button class="prev" @click="prevSlide"><img src="../static/carousel/prev.svg" alt=""></button>
-    <button class="next" @click="nextSlide"><img src="../static/carousel/next.svg" alt=""></button>
+    <button class="prev" @click="prevSlide"><img src="../../static/carousel/prev.svg" alt=""></button>
+    <button class="next" @click="nextSlide"><img src="../../static/carousel/next.svg" alt=""></button>
   </div>
 </template>
 

@@ -31,7 +31,7 @@
                     <p>{{ film.genre }}</p>
                     <p>{{ film.timing }}</p>
                   </div>
-                  <nuxt-link :to="'/'" class="film-title">{{ film.title }}</nuxt-link>
+                  <nuxt-link :to="`/films/${film.id}`" class="film-title">{{ film.title }}</nuxt-link>
                 </div>
                 <div class="top__right">
                   <span class="age-btn">{{ film.age }}</span>
@@ -73,7 +73,7 @@
 </template>
 
 <script>
-import Carousel from "../components/Carousel";
+import Carousel from "../components/Carousel/Carousel";
 import Day from "../components/Day"
 import ScheduleBtn from "../components/ScheduleBtn";
 

@@ -7,10 +7,10 @@
         </nuxt-link>
 
         <ul class="navbar-nav" :class="{'active': isOpen}">
-          <li class="nav-item" v-for="item in items" :key="item.id">
+          <li class="nav-item" v-for="item in items" :key="item.id" @click="toggle">
             <nuxt-link class="nav-link" :to="item.link">{{ item.title }}</nuxt-link>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" @click="toggle">
             <nuxt-link class="nav-link" :to="'/'"><img src="../static/header/user.webp" alt=""></nuxt-link>
           </li>
         </ul>
