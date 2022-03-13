@@ -7,10 +7,10 @@
         </nuxt-link>
 
         <ul class="navbar-nav" :class="{'active': isOpen}">
-          <li class="nav-item" v-for="item in items" :key="item.id" @click="toggle">
+          <li class="nav-item" v-for="item in items" :key="item.id" @click="closeMenu">
             <nuxt-link class="nav-link" :to="item.link">{{ item.title }}</nuxt-link>
           </li>
-          <li class="nav-item" @click="toggle">
+          <li class="nav-item" @click="closeMenu">
             <nuxt-link class="nav-link" :to="'/'"><img src="../static/header/user.webp" alt=""></nuxt-link>
           </li>
         </ul>
@@ -46,6 +46,10 @@ export default {
       } else {
         document.querySelector('html').style.overflow = 'auto'
       }
+    },
+    closeMenu() {
+      this.isOpen = false
+      document.querySelector('html').style.overflow = 'auto'
     }
   },
 }
