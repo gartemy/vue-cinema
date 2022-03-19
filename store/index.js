@@ -180,7 +180,13 @@ export const state = () => ({
         {id: 6, time: '10:35', price: '190 ₽'},
         {id: 7, time: '10:35', price: '190 ₽'}],
       isFavourite: false
-    }]
+    }],
+  stocks: [
+    {id: 1, img: 'stocks/pushkin.jpg', title: 'Пушкинская карта', description: 'Оплачивайте билеты на фильмы, одобренные Министерством культуры РФ'},
+    {id: 2, img: 'stocks/bonus.jpg', title: 'Кинобонусы', description: 'Получайте больше за свою любовь к кино'},
+    {id: 3, img: 'stocks/pensioners.jpg', title: 'Скидки для пенсионеров'},
+    {id: 4, img: 'stocks/students.jpg', title: 'Скидки для школьников и студентов'}
+  ]
 })
 
 export const getters = {

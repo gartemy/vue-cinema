@@ -157,4 +157,19 @@ body {
     padding-left: 2px;
   }
 }
+
+.content-block {
+  max-width: 825px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 55px 55px 80px 55px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  margin: 20px 0 65px 0;
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 35px;
+  }
+}
 </style>

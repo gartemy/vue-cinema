@@ -32,7 +32,7 @@ export default {
       items: [
         {id: 1, title: 'Расписание', link: '/'},
         {id: 2, title: 'Фильмы', link: '/films'},
-        {id: 3, title: 'Акции', link: '/'},
+        {id: 3, title: 'Акции', link: '/stocks'},
         {id: 4, title: 'Новости', link: '/'},
         {id: 5, title: 'Контакты', link: '/'}
       ]
