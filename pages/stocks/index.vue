@@ -28,7 +28,6 @@ export default {
   display: flex;
   justify-content: center;
   color: #000000;
-  font-family: 'Open Sans', sans-serif;
   background: linear-gradient(to bottom, #1A2B41 35%, #ffffff 35%);
   flex-grow: 3;
 

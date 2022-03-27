@@ -1,4 +1,5 @@
 export const state = () => ({
+  isMenuOpen: false,
   isModalVisible: false,
   trailer: '',
   carouselData: [
@@ -111,10 +112,7 @@ export const state = () => ({
       directors: 'Джон Уоттс',
       actors: 'Том Холланд, Зендея Коулман, Бенедикт Камбербэтч, Энгаури Райс',
       content: 'Впервые в киноистории Человека-паука наш дружелюбный герой разоблачён. Теперь супергеройские подвиги стали неотделимы от его обычной жизни. Когда он просит помощи у Доктора Стрэнджа, ситуация только накаляется. И Питер Паркер начинает понимать, что такое быть Человеком-пауком на самом деле.',
-      gallery: {
-        main: 'spider-man/frame1.jpg',
-        others: ['spider-man/frame2.jpg', 'spider-man/frame3.jpg']
-      },
+      gallery: ['spider-man/frame1.jpg', 'spider-man/frame2.jpg', 'spider-man/frame3.jpg'],
       schedule: [
         {id: 1, time: '10:35', price: '190 ₽'},
         {id: 2, time: '10:35', price: '190 ₽'},
@@ -186,6 +184,11 @@ export const state = () => ({
     {id: 2, img: 'stocks/bonus.jpg', title: 'Кинобонусы', description: 'Получайте больше за свою любовь к кино'},
     {id: 3, img: 'stocks/pensioners.jpg', title: 'Скидки для пенсионеров'},
     {id: 4, img: 'stocks/students.jpg', title: 'Скидки для школьников и студентов'}
+  ],
+  news: [
+    {id: 1, img: '', title: 'Иностранные фильмы только у нас!', date: '21.03.2022'},
+    {id: 2, img: '', title: 'Смотри "Энканто" и выиграй приз', date: '25.02.2022'},
+    {id: 3, img: '', title: 'Бонусная карта', date: '01.01.2022'}
   ]
 })
 

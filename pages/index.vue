@@ -1,5 +1,5 @@
 <template>
-  <main class="main">
+  <main class="main" v-if="$store.state.isMenuOpen === false">
     <div class="container">
       <carousel :carousel-data="$store.state.carouselData" :interval="5000"></carousel>
 

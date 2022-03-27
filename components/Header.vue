@@ -33,7 +33,7 @@ export default {
         {id: 1, title: 'Расписание', link: '/'},
         {id: 2, title: 'Фильмы', link: '/films'},
         {id: 3, title: 'Акции', link: '/stocks'},
-        {id: 4, title: 'Новости', link: '/'},
+        {id: 4, title: 'Новости', link: '/news'},
         {id: 5, title: 'Контакты', link: '/'}
       ]
     }
@@ -42,7 +42,7 @@ export default {
     toggle() {
       this.isOpen = !this.isOpen
       if (this.isOpen) {
-        document.querySelector('html').style.overflow = 'hidden'
+        document.querySelector('html').style.overflow = 'scroll'
       } else {
         document.querySelector('html').style.overflow = 'auto'
       }
@@ -148,7 +148,7 @@ img {
       &.active {
         display: flex;
         flex-direction: column;
-        gap: 40px;
+        gap: 30px;
         position: absolute;
         left: 0;
         top: 0;
@@ -160,7 +160,7 @@ img {
         padding-top: 120px;
 
         a {
-          font-size: 2rem;
+          font-size: 1.5rem;
         }
       }
     }

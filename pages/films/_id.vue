@@ -115,10 +115,10 @@
             <h2>Кадры из фильма</h2>
             <div class="film__frames">
               <div class="film__frame main_frame">
-                <img :src="require(`../../static/films/${film.gallery.main}`)" alt="">
+                <img :src="require(`../../static/films/${film.gallery[0]}`)" alt="">
               </div>
               <div class="film__frames">
-                <div v-for="frame in film.gallery.others" :key="frame" class="film__frame">
+                <div v-for="frame in film.gallery.slice(1)" :key="frame" class="film__frame">
                   <img :src="require(`../../static/films/${frame}`)" alt="">
                 </div>
               </div>

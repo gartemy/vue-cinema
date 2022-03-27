@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Vue cinema',
+    title: 'Vue Cinema',
     htmlAttrs: {
       lang: 'en'
     },
