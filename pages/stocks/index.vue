@@ -1,5 +1,5 @@
 <template>
-  <main class="main">
+  <main class="main main-stocks">
     <div class="container">
       <div class="content-block">
         <h2>Акции и скидки</h2>
@@ -25,11 +25,6 @@ export default {
 
 <style lang="scss" scoped>
 .main {
-  display: flex;
-  justify-content: center;
-  color: #000000;
-  background: linear-gradient(to bottom, #1A2B41 35%, #ffffff 35%);
-  flex-grow: 3;
 
   .stocks {
     display: flex;
@@ -66,27 +61,13 @@ export default {
   }
 }
 
-@media (max-width: 955px) {
-  .content-block {
-    padding: 55px 20px 80px 20px;
-  }
-}
-
 @media (max-width: 884px) {
   .main {
     background: #ffffff;
 
-    .content-block {
-      background: none;
-      box-shadow: none;
-      margin-top: 0;
-      padding: 35px 0 20px 0;
-      margin-bottom: 0;
-
       .stocks__item {
         min-width: 100%;
       }
-    }
   }
 }
 

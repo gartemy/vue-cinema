@@ -186,10 +186,10 @@ export const state = () => ({
     {id: 4, img: 'stocks/students.jpg', title: 'Скидки для школьников и студентов'}
   ],
   news: [
-    {id: 1, img: '', title: 'Иностранные фильмы только у нас!', date: '21.03.2022'},
-    {id: 2, img: '', title: 'Смотри "Энканто" и выиграй приз', date: '25.02.2022'},
-    {id: 3, img: '', title: 'Бонусная карта', date: '01.01.2022'}
-  ]
+    {id: 1, img: 'news/bonuses.png', title: 'Бонусная карта', date: '01.01.2022'},
+    {id: 2, img: 'news/enkanto.png', title: 'Смотри "Энканто" и выиграй приз', date: '25.02.2022'},
+    {id: 3, img: 'news/batman.jpg', title: 'Бэтмена не будет! Расходимся...', date: '03.03.2022'}
+  ].reverse()
 })
 
 export const getters = {

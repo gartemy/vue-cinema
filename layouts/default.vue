@@ -158,6 +158,14 @@ body {
   }
 }
 
+.main-news, .main-stocks {
+  display: flex;
+  justify-content: center;
+  color: #000000;
+  background: linear-gradient(to bottom, #1A2B41 35%, #ffffff 35%);
+  flex-grow: 3;
+}
+
 .content-block {
   max-width: 825px;
   background-color: #ffffff;
@@ -170,6 +178,22 @@ body {
     font-size: 2rem;
     font-weight: 600;
     margin-bottom: 35px;
+  }
+}
+
+@media (max-width: 955px) {
+  .content-block {
+    padding: 55px 20px 80px 20px;
+  }
+}
+
+@media (max-width: 884px) {
+  .content-block {
+    background: none;
+    box-shadow: none;
+    margin-top: 0;
+    padding: 35px 0 20px 0;
+    margin-bottom: 0;
   }
 }
 </style>
