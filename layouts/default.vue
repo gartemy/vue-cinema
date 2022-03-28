@@ -174,16 +174,16 @@ body {
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   margin: 20px 0 65px 0;
 
+  &__date {
+    font-size: 0.875rem;
+    color: rgb(0,28,45,.5);
+  }
+
   h2 {
     font-size: 2rem;
     font-weight: 600;
     margin-bottom: 35px;
   }
-}
-
-.news-date {
-    font-size: 0.875rem;
-    color: rgb(0,28,45,.5);
 }
 
 @media (max-width: 955px) {

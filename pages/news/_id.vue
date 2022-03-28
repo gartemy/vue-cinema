@@ -1,21 +1,17 @@
 <template>
   <main class="main main-news">
     <div class="container">
-      <div class="content-block">
-        <p class="news-date">{{ newsItem.date }}</p>
-        <h2>{{ newsItem.title }}</h2>
-        <div class="news__item">
-          <img :src="require(`../../static/${newsItem.img}`)" alt="">
-          <p class="news__item-description">{{ newsItem.description }}</p>
-        </div>
-      </div>
+      <content-block :item="newsItem"></content-block>
     </div>
   </main>
 </template>
 
 <script>
+import ContentBlock from "@/components/ContentBlock";
+
 export default {
   name: "NewsItem",
+  components: {ContentBlock},
   data() {
     return {
       newsId: this.$router.history.current.params.id

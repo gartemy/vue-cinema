@@ -4,7 +4,7 @@
       <div class="content-block">
         <h2>Акции и скидки</h2>
         <div class="stocks">
-          <div v-for="stock in $store.state.stocks" :key="stock.id" class="stocks__item">
+          <div v-for="stock in $store.state.stocks" :key="stock.id" class="stocks__item" @click="$router.push(`/stocks/${stock.id}`)">
             <img :src="require(`../../static/${stock.img}`)" alt="">
             <div class="stocks__item-info">
               <h4>{{ stock.title }}</h4>
