@@ -4,19 +4,19 @@
     <div class="content-block">
       <h2>Свежие новости</h2>
       <div class="news">
-        <div class="news__item main_item">
-          <img :src="require(`../../static/${$store.state.news[0].img}`)" alt="">
+        <div class="news__item main_item" @click="$router.push(`/news/${mainItem.id}`)">
+          <img :src="require(`../../static/${mainItem.img}`)" alt="">
           <div class="news__item-info">
-            <h4>{{ $store.state.news[0].title }}</h4>
-            <p>{{ $store.state.news[0].date }}</p>
+            <h4>{{ mainItem.title }}</h4>
+            <p class="news-date">{{ mainItem.date }}</p>
           </div>
         </div>
         <div class="news__items">
-          <div v-for="item in $store.state.news.slice(1)" class="news__item">
+          <div v-for="item in $store.state.news.slice(1)" class="news__item" @click="$router.push(`/news/${item.id}`)">
             <img :src="require(`../../static/${item.img}`)" alt="">
             <div class="news__item-info">
               <h4>{{ item.title }}</h4>
-              <p>{{ item.date }}</p>
+              <p class="news-date">{{ item.date }}</p>
             </div>
           </div>
         </div>
@@ -28,17 +28,17 @@
 
 <script>
 export default {
-  name: "index"
+  name: "index",
+  data() {
+    return {
+      mainItem: this.$store.state.news[0]
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 .main {
-  display: flex;
-  justify-content: center;
-  color: #000000;
-  background: linear-gradient(to bottom, #1A2B41 35%, #ffffff 35%);
-  flex-grow: 3;
 
   .news {
     display: flex;
@@ -58,7 +58,7 @@ export default {
       cursor: pointer;
 
       &-info {
-        padding: 20px 20px 25px 20px;
+        padding: 10px 20px 25px 20px;
       }
 
       img {
@@ -70,11 +70,6 @@ export default {
         font-size: 1.25rem;
         margin-bottom: 5px;
       }
-
-      p {
-        font-size: 0.875rem;
-        color: rgb(0,28,45,.5);
-      }
     }
     .main_item {
       max-width: 548px;
@@ -83,9 +78,6 @@ export default {
 }
 
 @media (max-width: 884px) {
-  .main {
-    background: #ffffff;
-
     .news {
       flex-direction: column;
 
@@ -97,7 +89,6 @@ export default {
         min-width: 100%;
       }
     }
-  }
 }
 
 @media (max-width: 320px) {
